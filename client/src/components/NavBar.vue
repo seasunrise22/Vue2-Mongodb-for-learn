@@ -41,6 +41,7 @@
 </template>
 
 <script>
+// Vuex 스토어는 main.js 파일에서 Vue 인스턴스에 등록되어, 애플리케이션의 모든 컴포넌트에서 Vuex 스토어에 접근할 수 있다.
 import { mapState } from 'vuex';
 import axios from 'axios';
 

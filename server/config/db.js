@@ -14,7 +14,7 @@ dotenv.config();
 
 const MONGO_ID = process.env.MONGO_ID;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
-const MONGO_URL = `mongodb://${MONGO_ID}:${MONGO_PASSWORD}@localhost:27017/admin`;
+const MONGO_URL = `mongodb://${MONGO_ID}:${MONGO_PASSWORD}@localhost:27017/admin`; // MongoDB 서버의 URI
 
 const connectDB = () => {
     mongoose.connect(MONGO_URL, {
@@ -28,6 +28,7 @@ const connectDB = () => {
         }
     });
 
+    // mongoose 이벤트 리스너 : error, disconnected 
     mongoose.connection.on('error', (error) => {
         console.error('몽고디비 가동 중 연결 에러', error);
     });

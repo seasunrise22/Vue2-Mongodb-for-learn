@@ -61,13 +61,13 @@ export default {
                         // 작성일 형식 변환
                         const createdAt = moment(post.createdAt)
                         let formattedTime
-                        if (now.isSame(createdAt, 'day')) formattedTime = createdAt.format('HH:mm')
-                        else if (now.isSame(createdAt, 'year')) formattedTime = createdAt.format('MM.DD')
-                        else formattedTime = createdAt.format('YY.MM.DD')
+                        if (now.isSame(createdAt, 'day')) formattedTime = createdAt.format('HH:mm') // 오늘 작성된 경우
+                        else if (now.isSame(createdAt, 'year')) formattedTime = createdAt.format('MM.DD') // 올해 작성된 경우
+                        else formattedTime = createdAt.format('YY.MM.DD') // 그 외 작성된 경우
                         post.createdAt = formattedTime
 
                         // items 배열에 가공 된 post 넣기
-                        this.items.unshift(post)
+                        this.items.unshift(post) // 배열의 시작 부분에 추가
                         i++
                     }
                     this.postCount = Object.keys(resData).length

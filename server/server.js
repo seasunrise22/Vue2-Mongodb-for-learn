@@ -58,12 +58,13 @@ passport.use(new localStrategy({
   }
 }))
 
-// passport serializeUser: 인증된 사용자를 식별하기 위해 세션에 저장할 정보를 선택, 로그인 성공시에만 호출됨.
+// 로그인 성공 시 호출되어, 인증된 사용자의 ID를 세션에 저장. 이를 통해 사용자가 로그인 상태를 유지할 수 있음.
 passport.serializeUser(function (user, done) {
   done(null, user.id)
 })
 
-// passport deserializeUser: 세션에 저장된 정보를 기반으로 사용자 정보를 조회하고, req.user를 통해 사용 가능
+// 사용자가 요청을 보낼 때마다 호출되어, 세션에 저장된 사용자 ID를 기반으로 사용자 정보를 조회하고, 
+// 이를 req.user를 통해 애플리케이션에서 사용할 수 있게 함.
 passport.deserializeUser(async function (id, done) {
   try {
     const user = await UserModel.findOne({ id: id })
