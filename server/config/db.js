@@ -14,7 +14,10 @@ dotenv.config();
 
 const MONGO_ID = process.env.MONGO_ID;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
-const MONGO_URL = `mongodb://${MONGO_ID}:${MONGO_PASSWORD}@localhost:27017/admin`; // MongoDB 서버의 URI
+
+// MongoDB 서버의 URI
+// admin 데이터베이스를 통해 계정 검증을 수행한다. 계정은 root 권한이 부여된 관리자 계정을 따로 생성해야한다. (Node.js 교과서 373p 참조)
+const MONGO_URL = `mongodb://${MONGO_ID}:${MONGO_PASSWORD}@localhost:27017/admin`; 
 
 const connectDB = () => {
     mongoose.connect(MONGO_URL, {
